@@ -1,15 +1,10 @@
-119,Introduction to Unix/Linux,1,1
 121,Intro to Computing/Web,3,3
 123,Simulation and Modeling,3,3
 152,Computer Security and Society,3,3
 217,Discrete Math CS Applications,3,2
 221,Intro to Programming,3,3
-221L,Intro to Programming Lab ,1.5,1
 285,Topics in Computing,3,3
-310,Perl,1.5,1
-313,Computer Language,1,1
 319,Programming in C and C++,3,2
-320,System Administration,1,1
 321,Design/Analysis of Algorithms,3,3
 336,Software Engineering I,3,3
 357,Computer Networks,3,3

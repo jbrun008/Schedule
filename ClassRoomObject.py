@@ -9,11 +9,11 @@ class ClassRoomObject(object):
     def __init__(self, roomNum):
         self.roomNum = roomNum
         self.dayList = []
-        self.monday = DayObject.DayObject("Monday")
-        self.tuesday = DayObject.DayObject("Tuesday")
-        self.wednesday = DayObject.DayObject("Wednesday")
-        self.thursday = DayObject.DayObject("Thursday")
-        self.friday = DayObject.DayObject("Friday")
+        self.monday = DayObject.DayObject("\nMONDAY\n")
+        self.tuesday = DayObject.DayObject("\nTUESDAY\n")
+        self.wednesday = DayObject.DayObject("\nWEDNESDAY\n")
+        self.thursday = DayObject.DayObject("\nTHURSDAY\n")
+        self.friday = DayObject.DayObject("\nFRIDAY\n")
         self.setupDays()
         
     def setupDays(self): 
@@ -37,5 +37,5 @@ class ClassRoomObject(object):
         s = ""
         for p in range(len(self.dayList)):
             s = s+ str(self.dayList[p])
-        return("Room Number: " + str(self.roomNum) + "Room Schedule:\n" + s)
+        return("Room Number: " + str(self.roomNum) + "\nRoom Schedule:\n" + s)
     

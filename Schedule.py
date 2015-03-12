@@ -1,6 +1,6 @@
 import ClassObject
 import ClassRoomObject
-
+import Stack
 #----------------------------------------------------------
 # Schedule.py
 #----------------------------------------------------------
@@ -13,8 +13,51 @@ class Schedule(object):
         self.templist = []
         self.importClasses()
         self.importClassRooms()
+        self.sort()
+
+    def sort(self):
         
+        tempClassList = Stack.Stack(self.classlist)
+        tempClassRoomList = Stack.Stack(self.classRoomList)
+        currentClassRoom = tempClassRoomList.pop()
         
+        while tempClassList.peek() != None:
+            
+            currentClass = tempClassList.pop()
+
+            if currentClass.getNumCredits() == "3":
+                
+                if currentClass.getTimesMeet() == "3\n":
+                    
+                    
+                    if currentClassRoom.monday.getTimeBlock() != None:
+                        
+                        currentClassRoom.monday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.monday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.wednesday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.wednesday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.friday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.friday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClass = None
+                    
+           
+            
+                elif currentClass.getTimesMeet() == "2\n":
+                    
+                    if (currentClassRoom.tuesday.getTimeBlock() != None):
+                        currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClass = None
+                    
+               
+            if (currentClass != None):
+                currentClassRoom = tempClassRoomList.pop()
+                tempClassList.push(currentClass)
+                
 
     def importClasses(self):
         f = open("classList.txt","r")
@@ -51,10 +94,9 @@ class Schedule(object):
 
         
     def __repr__(self):
-        s = "Available Classes: \n\n"
-        for i in range(len(self.classlist)):
-            s = s+(str(self.classlist[i])+"\n")
-        s = s + "\nAvailable Classrooms:\n\n"
+        s = "Schedule: \n\n"
+        
+        s = s + "\nClassrooms:\n\n"
         for k in range(len(self.classRoomList)):
             s = s+("\n-----------------------------------------------------------\n" + str(self.classRoomList[k])+"\n")
         return(s)

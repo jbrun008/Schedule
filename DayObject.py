@@ -23,8 +23,15 @@ class DayObject(object):
             self.hours.append(b)
             i = i + 100
 
-    def getTimeBlocks(self):
-        return(self.hours)
+    def getTimeBlock(self):
+        for k in range(len(self.hours)):
+            if(self.hours[k].getClassName() == ""):
+                return(self.hours[k])
+        
+        return(None)
+        
+                
+    
     
     def __repr__(self):
         s = (str(self.name) +"\n")
