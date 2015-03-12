@@ -1,5 +1,6 @@
 import ClassObject
 import ClassRoomObject
+
 #----------------------------------------------------------
 # Schedule.py
 #----------------------------------------------------------
@@ -13,6 +14,7 @@ class Schedule(object):
         self.importClasses()
         self.importClassRooms()
         
+        
 
     def importClasses(self):
         f = open("classList.txt","r")
@@ -24,11 +26,10 @@ class Schedule(object):
     def importClassRooms(self):
         f = open("classRoomList.txt","r")
         for line in f:
-            self.templist = line.split(',')
-            self.classRoomList.append(ClassRoomObject.ClassRoomObject(self.templist[0],self.templist[1]))
+            self.classRoomList.append(ClassRoomObject.ClassRoomObject(line))
         f.close()
 
-    
+        
 
     def addClass(self, ClassObject):
         f = open("classList.txt","a")
@@ -38,7 +39,7 @@ class Schedule(object):
         
     def addClassRoom(self, ClassRoomObject):
         f = open("classRoomList.txt","a")
-        f.write("\n"+str(ClassRoomObject.getRoomNum())+","+str(ClassRoomObject.getHoursAvailable()))
+        f.write("\n"+str(ClassRoomObject.getRoomNum()))
         f.close()
         self.importClassRooms()
 
@@ -47,6 +48,7 @@ class Schedule(object):
 
     def getClassRoomList(self):
         return(self.classRoomList)
+
         
     def __repr__(self):
         s = "Available Classes: \n\n"
@@ -54,6 +56,6 @@ class Schedule(object):
             s = s+(str(self.classlist[i])+"\n")
         s = s + "\nAvailable Classrooms:\n\n"
         for k in range(len(self.classRoomList)):
-            s = s+(str(self.classRoomList[k])+"\n")
+            s = s+("\n-----------------------------------------------------------\n" + str(self.classRoomList[k])+"\n")
         return(s)
         
