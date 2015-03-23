@@ -14,7 +14,10 @@ class Schedule(object):
         self.importClasses()
         self.importClassRooms()
         self.sort()
+#____________________________________________________________________________
 
+
+        
     def sort(self):
         
         tempClassList = Stack.Stack(self.classlist)
@@ -58,7 +61,12 @@ class Schedule(object):
                 currentClassRoom = tempClassRoomList.pop()
                 tempClassList.push(currentClass)
                 
+#_______________________________________________________________________________________________________________
 
+
+
+
+                
     def importClasses(self):
         f = open("classList.txt","r")
         for line in f:
