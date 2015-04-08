@@ -21,8 +21,9 @@ class Schedule(object):
     def sort(self):
         
         tempClassList = Stack.Stack(self.classlist)
-        tempClassRoomList = Stack.Stack(self.classRoomList)
-        currentClassRoom = tempClassRoomList.pop()
+        r = len(self.classRoomList)
+        i = 0
+        currentClassRoom = self.classRoomList[0]
         
         while tempClassList.peek() != None:
             
@@ -37,10 +38,13 @@ class Schedule(object):
                         
                         currentClassRoom.monday.getTimeBlock().setClassName(currentClass.getCourseName())
                         currentClassRoom.monday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.monday.getTimeBlock().setClassName("BREAK")
                         currentClassRoom.wednesday.getTimeBlock().setClassName(currentClass.getCourseName())
                         currentClassRoom.wednesday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.wednesday.getTimeBlock().setClassName("BREAK")
                         currentClassRoom.friday.getTimeBlock().setClassName(currentClass.getCourseName())
                         currentClassRoom.friday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.friday.getTimeBlock().setClassName("BREAK")
                         currentClass = None
                     
            
@@ -51,15 +55,19 @@ class Schedule(object):
                         currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
                         currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
                         currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.tuesday.getTimeBlock().setClassName("BREAK")
                         currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
                         currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
                         currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.thursday.getTimeBlock().setClassName("BREAK")
                         currentClass = None
                     
-               
-            if (currentClass != None):
-                currentClassRoom = tempClassRoomList.pop()
-                tempClassList.push(currentClass)
+            i = i+1  
+            if (i == r):
+                i=0
+                currentClassRoom = self.classRoomList[i]
+            else:
+                currentClassRoom = self.classRoomList[i]
                 
 #_______________________________________________________________________________________________________________
 
