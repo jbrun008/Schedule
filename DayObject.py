@@ -22,7 +22,15 @@ class DayObject(object):
             self.hours.append(a)
             self.hours.append(b)
             i = i + 100
+            
+    def getHours(self, h):
+        if h < len(self.hours):
+            return(self.hours[h].getClassName())
 
+    def removeHours(self,h):
+        if h < len(self.hours):
+            self.hours[h].setClassName("")
+        
     def getTimeBlock(self):
         for k in range(len(self.hours)):
             if(self.hours[k].getClassName() == ""):
@@ -61,7 +69,7 @@ class TimeBlock(object):
         self.className = newClassName
 
     def __repr__(self):
-        s = (str(self.className) + " Time Start: " + str(self.timeStart) + " Time End: " + str(self.timeEnd)+"\n")
+        s = ("\n"+str(self.className) + " Time Start: " + str(self.timeStart) + " Time End: " + str(self.timeEnd)+"\n")
         return(s)
 
 

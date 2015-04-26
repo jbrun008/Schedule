@@ -32,34 +32,34 @@ class Schedule(object):
 
             if currentClass.getNumCredits() == "3":
                 
-                if currentClass.getTimesMeet() == "3\n":
+                if currentClass.getTimesMeet() == "3":
                     
                     
                     if currentClassRoom.monday.getTimeBlock() != None:
                         
-                        currentClassRoom.monday.getTimeBlock().setClassName(currentClass.getCourseName())
-                        currentClassRoom.monday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.monday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
+                        currentClassRoom.monday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
                         currentClassRoom.monday.getTimeBlock().setClassName("BREAK")
-                        currentClassRoom.wednesday.getTimeBlock().setClassName(currentClass.getCourseName())
-                        currentClassRoom.wednesday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.wednesday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
+                        currentClassRoom.wednesday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
                         currentClassRoom.wednesday.getTimeBlock().setClassName("BREAK")
-                        currentClassRoom.friday.getTimeBlock().setClassName(currentClass.getCourseName())
-                        currentClassRoom.friday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.friday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
+                        currentClassRoom.friday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
                         currentClassRoom.friday.getTimeBlock().setClassName("BREAK")
                         currentClass = None
                     
            
             
-                elif currentClass.getTimesMeet() == "2\n":
+                elif currentClass.getTimesMeet() == "2":
                     
                     if (currentClassRoom.tuesday.getTimeBlock() != None):
-                        currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
-                        currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
-                        currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
+                        currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
+                        currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
                         currentClassRoom.tuesday.getTimeBlock().setClassName("BREAK")
-                        currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
-                        currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
-                        currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
+                        currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
+                        currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
+                        currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
                         currentClassRoom.thursday.getTimeBlock().setClassName("BREAK")
                         currentClass = None
 
@@ -89,16 +89,16 @@ class Schedule(object):
             currentClass = storageClassList.pop()
             
             if currentClass.getNumCredits() == "1.5":
-                if currentClass.getTimesMeet() == "1\n":
-                    currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
-                    currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
-                    currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName())
+                if currentClass.getTimesMeet() == "1":
+                    currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
+                    currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
+                    currentClassRoom.tuesday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
                     currentClassRoom.tuesday.getTimeBlock().setClassName("BREAK")
 
             if currentClass.getNumCredits() == "1":
-                if currentClass.getTimesMeet() == "1\n":
-                    currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
-                    currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName())
+                if currentClass.getTimesMeet() == "1":
+                    currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
+                    currentClassRoom.thursday.getTimeBlock().setClassName(currentClass.getCourseName()+ " " + currentClass.getTeacher())
                     currentClassRoom.thursday.getTimeBlock().setClassName("BREAK")
                 
             i = i+1  
@@ -121,7 +121,7 @@ class Schedule(object):
         f = open("classList.txt","r")
         for line in f:
             self.templist = line.split(',')
-            self.classlist.append(ClassObject.ClassObject(self.templist[0],self.templist[1],self.templist[2],self.templist[3]))
+            self.classlist.append(ClassObject.ClassObject(self.templist[0],self.templist[1],self.templist[2],self.templist[3],self.templist[4]))
         f.close()
 
     def importClassRooms(self):
@@ -134,7 +134,8 @@ class Schedule(object):
 
     def addClass(self, ClassObject):
         f = open("classList.txt","a")
-        f.write("\n"+str(ClassObject.getCourseNum())+","+str(ClassObject.getCourseName())+","+str(ClassObject.getNumCredits())+","+str(ClassObject.getTimesMeet()))
+        f.write("\n"+str(ClassObject.getCourseNum())+","+str(ClassObject.getCourseName())+","
+                +str(ClassObject.getNumCredits())+","+str(ClassObject.getTimesMeet())+"," +str(ClassObject.getTeacher()))
         f.close()
         self.importClasses()
         

@@ -5,12 +5,12 @@
 
 class ClassObject(object):
 
-    def __init__(self, courseNum, courseName, numCredits, timesMeet):
+    def __init__(self, courseNum, courseName, numCredits, timesMeet, teacher):
         self.courseNum = courseNum
         self.courseName = courseName
         self.numCredits = numCredits
         self.timesMeet = timesMeet
-
+        self.teacher = teacher
 #----------------------------------------------------------
     def getCourseNum(self):
         return(self.courseNum)
@@ -24,6 +24,8 @@ class ClassObject(object):
     def getTimesMeet(self):
         return(self.timesMeet)
 
+    def getTeacher(self):
+        return(self.teacher)
 
 #----------------------------------------------------------
     def setCourseNum(self,cNum ):
@@ -38,9 +40,11 @@ class ClassObject(object):
     def setTimesMeet(self, tMeet):
         self.timesMeet = tMeet
 
+    def setTeacher(self, newTeacher):
+        self.teacher = newTeacher
 #----------------------------------------------------------
     def __repr__(self):
-        a = "Csc" + str(self.courseNum) + ", " + self.courseName + ", " + str(self.numCredits) + " Credits, " + str(self.timesMeet)
+        a = "Csc" + str(self.courseNum) + ", " + self.courseName + ", " + str(self.numCredits) + " Credits, " + str(self.timesMeet) + " Teacher: " + str(self.teacher)
         return(a)
 
 
